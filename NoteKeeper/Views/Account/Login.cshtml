@@ -1,0 +1,60 @@
+@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<main class="account-main">
+    <div class="container">
+        <div class="account-card">
+
+            <div class="account-heading">
+                <img src="~/assets/notekeeper-icon.png" alt="" class="account-icon" />
+
+                <span class="eyebrow">Welcome back</span>
+                <h1>Login to NoteKeeper</h1>
+                <p>Your notes are right where you left them.</p>
+            </div>
+
+            <form asp-action="Login" method="post">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label">Email address</label>
+                    <input asp-for="Email" class="form-control" type="email" placeholder="you@example.com" />
+                    <span asp-validation-for="Email" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label">Password</label>
+                    <input asp-for="Password" class="form-control" placeholder="Enter your password" />
+                    <span asp-validation-for="Password" class="text-danger small"></span>
+                </div>
+
+                <label class="remember-label mb-4">
+                    <input asp-for="RememberMe" />
+                    Remember me
+                </label>
+
+                <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
+
+                <button class="btn btn-primary w-100" type="submit">
+                    Login
+                </button>
+
+            </form>
+
+            <p class="account-switch">
+                Don't have an account?
+                <a asp-action="Register">Sign up</a>
+            </p>
+
+        </div>
+
+        <p class="back-home">
+            <a asp-controller="Home" asp-action="Index">Back to home</a>
+        </p>
+
+    </div>
+</main>
