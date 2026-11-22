@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "My Notebooks";
+}
+
+<div class="container mt-4">
+    <h2>My Notebooks</h2>
+    <p>Create and manage your notebooks.</p>
+
+    <form id="notebookForm">
+        @Html.AntiForgeryToken()
+
+        <input type="hidden" id="notebookId" name="Id" value="0" />
+
+        <div class="mb-3">
+            <label for="title" class="form-label">Notebook Title</label>
+            <input type="text" id="title" name="Title"
+                   class="form-control" placeholder="Enter notebook title" required />
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea id="description" name="Description"
+                      class="form-control" placeholder="Enter description"></textarea>
+        </div>
+
+        <button type="submit" id="saveButton" class="btn btn-primary">
+            Create Notebook
+        </button>
+
+        <button type="button" id="cancelButton"
+                class="btn btn-secondary" style="display:none;">
+            Cancel
+        </button>
+    </form>
+
+    <hr />
+
+    <h4 class="mt-4">My Notebooks</h4>
+
+    <div id="message" class="mt-2"></div>
+
+    <div class="table-responsive mt-3">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="notebookList">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="~/js/notebook.js" asp-append-version="true"></script>
+}
